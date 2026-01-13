@@ -8,13 +8,24 @@ import com.uganda.learningapp.data.dao.RoadmapDao
 import com.uganda.learningapp.data.entity.ModuleEntity
 import com.uganda.learningapp.data.entity.TaskEntity
 import com.uganda.learningapp.data.entity.WeekUnitEntity
-
 import com.uganda.learningapp.data.entity.ProjectEntity
 import com.uganda.learningapp.data.entity.QuizEntity
+import com.uganda.learningapp.data.entity.ResourceEntity
+import com.uganda.learningapp.data.entity.BadgeEntity
+import com.uganda.learningapp.data.entity.UserSettingsEntity
 
 @Database(
-    entities = [ModuleEntity::class, WeekUnitEntity::class, TaskEntity::class, ProjectEntity::class, QuizEntity::class],
-    version = 3,
+    entities = [
+        ModuleEntity::class,
+        WeekUnitEntity::class,
+        TaskEntity::class,
+        ProjectEntity::class,
+        QuizEntity::class,
+        ResourceEntity::class,
+        BadgeEntity::class,
+        UserSettingsEntity::class
+    ],
+    version = 4,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

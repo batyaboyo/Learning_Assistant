@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
     tableName = "quizzes",
     foreignKeys = [
         ForeignKey(entity = WeekUnitEntity::class, parentColumns = ["id"], childColumns = ["weekId"])
-    ]
+    ],
+    indices = [androidx.room.Index(value = ["weekId"])]
 )
 data class QuizEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,

@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
     tableName = "weeks",
     foreignKeys = [
         ForeignKey(entity = ModuleEntity::class, parentColumns = ["id"], childColumns = ["moduleId"])
-    ]
+    ],
+    indices = [androidx.room.Index(value = ["moduleId"])]
 )
 data class WeekUnitEntity(
     @PrimaryKey val id: Int, 

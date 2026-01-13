@@ -9,9 +9,14 @@ import androidx.navigation.navArgument
 import com.uganda.learningapp.data.AppDatabase
 import com.uganda.learningapp.ui.screens.MainScreen
 import com.uganda.learningapp.ui.screens.ModuleDetailScreen
+import com.uganda.learningapp.ui.screens.QuizScreen
 
 @Composable
-fun AppNavigation(database: AppDatabase) {
+fun AppNavigation(
+    database: AppDatabase,
+    isDarkMode: Boolean,
+    onThemeChange: (Boolean) -> Unit
+) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "home") {
@@ -20,7 +25,9 @@ fun AppNavigation(database: AppDatabase) {
                 database = database,
                 onModuleClick = { moduleId ->
                     navController.navigate("module/$moduleId")
-                }
+                },
+                isDarkMode = isDarkMode,
+                onThemeChange = onThemeChange
             )
         }
         composable(
@@ -28,9 +35,7 @@ fun AppNavigation(database: AppDatabase) {
             arguments = listOf(navArgument("moduleId") { type = NavType.IntType })
         ) { backStackEntry ->
             val moduleId = backStackEntry.arguments?.getInt("moduleId") ?: return@composable
-import com.uganda.learningapp.ui.screens.QuizScreen
 
-// ...
             ModuleDetailScreen(
                 database = database,
                 moduleId = moduleId,
